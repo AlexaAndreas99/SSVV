@@ -44,7 +44,7 @@ public class AppTest {
     }
 
     @Test
-    public void shouldGroupBeInt() {
+    public void groupShouldBeInt() {
         try {
             service.add(new String[]{"1", "nume", "d2", "email", "prof"});
             assert (false);
