@@ -73,7 +73,7 @@ public abstract class AbstractXMLRepo<ID,E extends HasId<ID>> extends AbstractCr
                     .newTransformer();
             transformer.transform(new DOMSource(document),new StreamResult(fileName));
         }catch (Exception ex){
-            System.out.println(ex.getMessage());
+            //System.out.println(ex.getMessage());
         }
     }
 

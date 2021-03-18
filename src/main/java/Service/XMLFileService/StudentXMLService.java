@@ -16,7 +16,7 @@ public class StudentXMLService extends AbstractXMLService<String,Student>{
         try{
             grupa=Integer.parseInt(params[2]);
         }catch(NumberFormatException ex){
-            System.out.println(ex.getMessage());
+            //System.out.println(ex.getMessage());
         }
         return new Student(params[0],params[1],grupa,params[3],params[4]);
     }

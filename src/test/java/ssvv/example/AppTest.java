@@ -54,6 +54,16 @@ public class AppTest {
     }
 
     @Test
+    public void groupShouldBeNatural() {
+        try {
+            service.add(new String[]{"1", "nume", "-2", "email", "prof"});
+            assert (false);
+        } catch (ValidatorException e) {
+            assert (true);
+        }
+    }
+
+    @Test
     public void idShouldNotBeEmpty() {
         try {
             service.add(new String[]{"", "nume", "7", "email", "prof"});
@@ -100,6 +110,36 @@ public class AppTest {
             assert (false);
         } catch (ValidatorException e) {
             assert (true);
+        }
+    }
+
+    @Test
+    public void groupBVA0(){
+        try {
+            service.add(new String[]{"1", "nume", "0", "email", "teacher"});
+            assert (false);
+        } catch (ValidatorException e) {
+            assert (true);
+        }
+    }
+
+    @Test
+    public void groupBVA1(){
+        try {
+            service.add(new String[]{"1", "nume", "1", "email", "teacher"});
+            assert (true);
+        } catch (ValidatorException e) {
+            assert (false);
+        }
+    }
+
+    @Test
+    public void groupBVA2(){
+        try {
+            service.add(new String[]{"1", "nume", "2", "email", "teacher"});
+            assert (true);
+        } catch (ValidatorException e) {
+            assert (false);
         }
     }
 }
