@@ -53,6 +53,7 @@ public class ui {
         String[] params={id,nume,grupa,email,prof};
         try{
             stdSrv.add(params);
+            System.out.println("Student was added successfully");
         }catch (ValidatorException ex){
             System.out.println(ex.getMessage());
         }
