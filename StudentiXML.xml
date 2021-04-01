@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><inbox><student><id>1</id><nume>nume</nume><grupa>2</grupa><email>email</email><profesor>prof</profesor></student></inbox>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><inbox><tema><id>1</id><descriere>o descriere mai descriere</descriere><saptamanaLimita>5</saptamanaLimita><saptamanaPredarii>3</saptamanaPredarii></tema></inbox>

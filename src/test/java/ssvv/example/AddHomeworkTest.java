@@ -23,10 +23,31 @@ public class AddHomeworkTest {
         service = new TemaLabXMLService(repo);
     }
 
+//    @Test
+//    public void homeworkShouldBeValidWBT() {
+//        try {
+//            validator.validate(new TemaLab(1, "o descriere mai descriere", 5, 3));
+//            assert true;
+//        } catch (ValidatorException e) {
+//            assert false;
+//        }
+//    }
+//
+//    @Test
+//    public void homeworkShouldNotBeValidWBT()  {
+//        try {
+//            validator.validate(new TemaLab(0, "o descriere mai descriere", 5, 3));
+//            assert false;
+//        } catch (ValidatorException e) {
+//            assert true;
+//        }
+//    }
+
     @Test
-    public void homeworkShouldBeValidWBT() {
+    public void addHomeworkWBT() {
+        // 1 - 2 - 4 - 5 - 7
         try {
-            validator.validate(new TemaLab(1, "o descriere mai descriere", 5, 3));
+            repo.save(new TemaLab(1, "o descriere mai descriere", 5, 3));
             assert true;
         } catch (ValidatorException e) {
             assert false;
@@ -34,11 +55,34 @@ public class AddHomeworkTest {
     }
 
     @Test
-    public void homeworkShouldNotBeValidWBT() {
+    public void addHomeworkFailWBT() {
+        // 1 - 2 - 3 - 7
         try {
-            validator.validate(new TemaLab(0, "o descriere mai descriere", 5, 3));
+            repo.save(null);
+            assert false;
+        } catch (IllegalArgumentException | ValidatorException e) {
+            assert true;
+        }
+    }
+
+    @Test
+    public void addHomeworkFailIdWBT() {
+        // 1 - 2 - 4 - 5 - 7
+        try {
+            repo.save(new TemaLab(0, "o descriere mai descriere", 5, 3));
             assert false;
         } catch (ValidatorException e) {
+            assert true;
+        }
+    }
+
+    @Test
+    public void addHomeworkFailDescWBT() {
+        // 1 - 2 - 4 - 6 - 7
+        try {
+            repo.save(new TemaLab(1, "", 5, 3));
+            assert false;
+        } catch (IllegalArgumentException | ValidatorException e) {
             assert true;
         }
     }

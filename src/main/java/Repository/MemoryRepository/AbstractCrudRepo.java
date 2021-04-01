@@ -8,21 +8,23 @@ import Validator.IValidator;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class AbstractCrudRepo<ID,E extends HasId<ID>> implements Repo<ID,E> {
-    Map<ID,E> entityes;
+public abstract class AbstractCrudRepo<ID, E extends HasId<ID>> implements Repo<ID, E> {
+    Map<ID, E> entityes;
     IValidator<E> validator;
-    public AbstractCrudRepo(IValidator v){
-        entityes=new HashMap<ID,E>();
-        validator=v;
+
+    public AbstractCrudRepo(IValidator v) {
+        entityes = new HashMap<ID, E>();
+        validator = v;
     }
+
     @Override
-    public E findOne(ID id){
-        if (entityes.get(id)==null){
+    public E findOne(ID id) {
+        if (entityes.get(id) == null) {
             return null;
-        }else{
-            if(id==null){
+        } else {
+            if (id == null) {
                 throw new IllegalArgumentException();
-            }else{
+            } else {
                 return entityes.get(id);
             }
         }
@@ -30,25 +32,28 @@ public abstract class AbstractCrudRepo<ID,E extends HasId<ID>> implements Repo<I
     }
 
     @Override
-    public Iterable<E> findAll(){
+    public Iterable<E> findAll() {
         return entityes.values();
     }
+
     @Override
-    public E save(E entity) throws ValidatorException {
-        if(entity==null){
-            throw new IllegalArgumentException("Entity can not be null!\n");
+    public E save(E entity) throws ValidatorException { // 1
+        if (entity == null) { //2
+            throw new IllegalArgumentException("Entity can not be null!\n"); // 3
         }
-        try{
-            validator.validate(entity);
-            return entityes.putIfAbsent(entity.getId(),entity);
-        }catch(ValidatorException ex){
-            throw new ValidatorException(ex.getMessage());
+        try {
+            validator.validate(entity); // 4
+            return entityes.putIfAbsent(entity.getId(), entity); // 5
+        } catch (ValidatorException ex) { //
+            throw new ValidatorException(ex.getMessage()); // 6
         }
-    }
+    } // 7
+
     @Override
-    public E delete(ID id){
+    public E delete(ID id) {
         return entityes.remove(id);
     }
+
     @Override
     public E update(E entity) {
         try {
@@ -58,12 +63,13 @@ public abstract class AbstractCrudRepo<ID,E extends HasId<ID>> implements Repo<I
                 validator.validate(entity);
                 return entityes.replace(entity.getId(), entity);
             }
-        }catch(ValidatorException e){
+        } catch (ValidatorException e) {
             return null;
         }
     }
+
     //@Override
-    public long size(){
+    public long size() {
         return entityes.size();
     }
 
