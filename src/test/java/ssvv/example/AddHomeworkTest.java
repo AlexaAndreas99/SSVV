@@ -23,26 +23,6 @@ public class AddHomeworkTest {
         service = new TemaLabXMLService(repo);
     }
 
-//    @Test
-//    public void homeworkShouldBeValidWBT() {
-//        try {
-//            validator.validate(new TemaLab(1, "o descriere mai descriere", 5, 3));
-//            assert true;
-//        } catch (ValidatorException e) {
-//            assert false;
-//        }
-//    }
-//
-//    @Test
-//    public void homeworkShouldNotBeValidWBT()  {
-//        try {
-//            validator.validate(new TemaLab(0, "o descriere mai descriere", 5, 3));
-//            assert false;
-//        } catch (ValidatorException e) {
-//            assert true;
-//        }
-//    }
-
     @Test
     public void addHomeworkWBT() {
         // 1 - 2 - 4 - 5 - 7

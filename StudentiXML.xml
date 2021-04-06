@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><inbox><tema><id>1</id><descriere>o descriere mai descriere</descriere><saptamanaLimita>5</saptamanaLimita><saptamanaPredarii>3</saptamanaPredarii></tema></inbox>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><inbox><nota><id>1</id><idStudent>2</idStudent><idTemaLab>3</idTemaLab><valoare>9.0</valoare><data>2007-12-03T10:15:30</data></nota></inbox>
